@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: "class",
   theme: {
     colors: {
       1: "#7C5DFA",
@@ -17,7 +18,11 @@ module.exports = {
       12: "#141625",
       white: "#fff",
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        checkIcon: "url('./assets/icon-check.svg')",
+      },
+    },
   },
   plugins: [],
 };
