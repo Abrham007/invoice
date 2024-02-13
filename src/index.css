@@ -10,4 +10,5 @@
 
 body {
   font-family: "League Spartan", sans-serif;
+  @apply bg-11 dark:bg-12 w-screen h-screen pt-[78px];
 }
