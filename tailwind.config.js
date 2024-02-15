@@ -37,16 +37,7 @@ module.exports = {
         },
       ],
 
-      baseL: [
-        "0.9375rem",
-        {
-          lineHeight: "1.5rem",
-          letterSpacing: "-0.01563",
-          fontWeight: "bold",
-        },
-      ],
-
-      baseS: [
+      base: [
         "0.9375rem",
         {
           lineHeight: "0.9375rem",
@@ -55,16 +46,7 @@ module.exports = {
         },
       ],
 
-      smL: [
-        "0.8125rem",
-        {
-          lineHeight: "1.125rem",
-          letterSpacing: "-0.00625rem",
-          fontWeight: "medium",
-        },
-      ],
-
-      smS: [
+      sm: [
         "0.8125rem",
         {
           lineHeight: "0.9375rem",
@@ -73,9 +55,16 @@ module.exports = {
         },
       ],
     },
+    boxShadow: {
+      DEFAULT: "0px 10px 10px -10px rgba(72, 84, 159, 0.10)",
+    },
+
     extend: {
       backgroundImage: {
         checkIcon: "url('./assets/icon-check.svg')",
+      },
+      lineHeight: {
+        4.5: "1.125rem",
       },
     },
   },
