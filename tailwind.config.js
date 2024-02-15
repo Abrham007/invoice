@@ -18,6 +18,61 @@ module.exports = {
       12: "#141625",
       white: "#fff",
     },
+    fontSize: {
+      xl: [
+        "2.25rem",
+        {
+          lineHeight: "2.25rem",
+          letterSpacing: "-0.07031rem",
+          fontWeight: "bold",
+        },
+      ],
+
+      lg: [
+        "1.5rem",
+        {
+          lineHeight: "1.5rem",
+          letterSpacing: "-0.04688",
+          fontWeight: "bold",
+        },
+      ],
+
+      baseL: [
+        "0.9375rem",
+        {
+          lineHeight: "1.5rem",
+          letterSpacing: "-0.01563",
+          fontWeight: "bold",
+        },
+      ],
+
+      baseS: [
+        "0.9375rem",
+        {
+          lineHeight: "0.9375rem",
+          letterSpacing: "-0.01563",
+          fontWeight: "bold",
+        },
+      ],
+
+      smL: [
+        "0.8125rem",
+        {
+          lineHeight: "1.125rem",
+          letterSpacing: "-0.00625rem",
+          fontWeight: "medium",
+        },
+      ],
+
+      smS: [
+        "0.8125rem",
+        {
+          lineHeight: "0.9375rem",
+          letterSpacing: "-0.00625rem",
+          fontWeight: "medium",
+        },
+      ],
+    },
     extend: {
       backgroundImage: {
         checkIcon: "url('./assets/icon-check.svg')",
