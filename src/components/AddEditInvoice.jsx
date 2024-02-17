@@ -1,10 +1,11 @@
+import InputDate from "./InputDate";
 import InputDropdown from "./InputDropdown";
 import InputText from "./InputText";
 
 export default function AddEditInvoice() {
   return (
     <div className="p-6 flex flex-col gap-[22px] bg-white">
-      <h2 className="text-lg/8 text-8 dark:text-white">
+      <h2 className="text-lg/8 text-8 dark:text-white font-bold">
         Edit <span className="text-6">#</span>XM9141
       </h2>
       <div className="flex flex-col gap-[41px]">
@@ -32,6 +33,7 @@ export default function AddEditInvoice() {
 
         <div>
           <InputDropdown></InputDropdown>
+          <InputDate></InputDate>
         </div>
       </div>
     </div>
