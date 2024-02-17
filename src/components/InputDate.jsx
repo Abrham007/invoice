@@ -9,9 +9,26 @@ export default function InputDate() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <label className="w-full flex flex-col gap-[9px]">
         <span className="text-sm text-7 dark:text-5">Issue Date</span>
+
         <DesktopDatePicker
           slots={{ openPickerIcon: IconCalendar }}
-          className="rounded border border-5 hover:border-none  hover:outline-none focus:border-none active:border-none"
+          slotProps={{
+            openPickerButton: {
+              className: "w-[40px] h-[40px]",
+            },
+          }}
+          sx={{
+            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+              border: "1px solid #DFE3FA",
+            },
+            "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
+              border: "1px solid #9277FF",
+            },
+            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+              {
+                border: "1px solid #9277FF",
+              },
+          }}
         />
       </label>
     </LocalizationProvider>
