@@ -6,7 +6,7 @@ import InvoiceDetailBtns from "./InvoiceDetailBtns";
 
 export default function InvoiceDetail() {
   return (
-    <main className="mx-6 mb-10 flex flex-col gap-8 w-[327px] md:w-[730px] mx-auto">
+    <main className="mx-6 mb-10  flex flex-col gap-8 w-[327px] md:w-[730px] mx-auto">
       <a href="#" className="flex gap-6  items-center self-start">
         <img src={leftIcon} alt=""></img>
         <span className="text-base text-8 dark:text-white hover:text-7">
