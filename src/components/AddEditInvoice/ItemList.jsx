@@ -10,8 +10,14 @@ export default function ItemList() {
         Item List
       </h3>
       <div className="flex flex-col gap-[49px]">
-        <Item></Item>
-        <Item></Item>
+        <ul className="flex flex-col gap-[49px] list-none">
+          <li className="group">
+            <Item></Item>
+          </li>
+          <li className="group">
+            <Item></Item>
+          </li>
+        </ul>
         <Button type="3">+ Add New Item</Button>
       </div>
     </fieldset>
