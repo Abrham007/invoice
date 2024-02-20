@@ -2,7 +2,7 @@ import * as React from "react";
 import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import IconCalendar from "./IconCalendar";
 
 export default function InputDate({ lable, disabled = false }) {
@@ -21,13 +21,19 @@ export default function InputDate({ lable, disabled = false }) {
       <label className="w-full flex flex-col gap-[9px]">
         <span className="text-sm text-7 dark:text-5">{lable}</span>
 
-        <DatePicker
+        <DesktopDatePicker
           disabled={disabled}
           className="cursor-pointer"
           format="DD MMM YYYY"
           defaultValue={dayjs("2022-08-17")}
+          PopperProps={{
+            style: { zIndex: 1000000 },
+          }}
           slots={{ openPickerIcon: IconCalendar }}
           slotProps={{
+            popper: {
+              disablePortal: true,
+            },
             openPickerButton: {
               className: "w-[40px] h-[40px]",
             },
