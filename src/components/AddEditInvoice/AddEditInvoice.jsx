@@ -5,12 +5,18 @@ import InvoiceInfo from "./InvoiceInfo";
 import ItemList from "./ItemList";
 import leftIcon from "../../assets/icon-arrow-left.svg";
 import Modal from "../Modal";
+import { useMediaQuery } from "react-responsive";
 
-export default function AddEditInvoice() {
+export default function AddEditInvoice({ Wrapper = "section" }) {
+  const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
+
+  if (isBigScreen) {
+    Wrapper = Modal;
+  }
   return (
-    <section className="pb-[155px] absolute top-[105px] left-0 w-screen md:w-[616px]">
-      <div className="p-6 md:p-14 flex flex-col gap-[22px] bg-white dark:bg-12">
-        <a href="#" className="flex gap-6 items-start  self-start">
+    <Wrapper className="pb-[155px] absolute md:fixed top-20 lg:top-0 left-0 lg:left-[103px] w-screen md:w-[616px]  rounded-br-[20px] rounded-tr-[20px]">
+      <div className="p-6 pb-8 md:p-14 flex flex-col gap-[22px] bg-white dark:bg-12">
+        <a href="#" className="flex gap-6 items-start  self-start md:hidden">
           <img src={leftIcon} alt=""></img>
           <span className="text-base text-8 dark:text-white hover:text-7">
             Go Back
@@ -24,12 +30,12 @@ export default function AddEditInvoice() {
           <BillTo></BillTo>
           <InvoiceInfo></InvoiceInfo>
           <ItemList></ItemList>
-          <div className="fixed bottom-0 left-0 w-screen md:full  p-6 flex gap-2 justify-end items-center bg-white dark:bg-3 shadow-xl">
-            <Button type="3">Cancel</Button>
-            <Button type="2">Save Changes</Button>
-          </div>
         </div>
       </div>
-    </section>
+      <div className="fixed bottom-0 left-0 lg:left-[103px]  w-screen md:w-[616px]  p-6 flex gap-2 justify-end items-center bg-white dark:bg-3 shadow-xl md:rounded-r-[20px]">
+        <Button type="3">Cancel</Button>
+        <Button type="2">Save Changes</Button>
+      </div>
+    </Wrapper>
   );
 }
