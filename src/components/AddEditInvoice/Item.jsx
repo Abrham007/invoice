@@ -2,7 +2,7 @@ import InputText from "../InputText";
 import deleteIcon from "../../assets/icon-delete.svg";
 export default function Item() {
   return (
-    <fieldset className="flex flex-col gap-[15px]">
+    <fieldset className="flex flex-col md:flex-row gap-[15px]">
       <InputText label="Item Name"></InputText>
       <fieldset className="w-full flex gap-4">
         <span className="w-[64px]">
