@@ -11,7 +11,7 @@ export default function Button({ children, type, ...props }) {
       break;
     case "3":
       cssClass =
-        "px-[23px] h-[48px] rounded-full bg-[#F9FAFE] hover:bg-5 dark:bg-4 dark:hover:bg-white text-7 text-base dark:text-5 ";
+        "px-[23px] h-[48px] rounded-full bg-[#F9FAFE] hover:bg-5 dark:bg-4 dark:hover:bg-white text-7 text-base dark:text-5";
       break;
     case "4":
       cssClass =
