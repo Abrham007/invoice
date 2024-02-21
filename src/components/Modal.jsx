@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 export default function Modal({
   children,
-  isOpen = false,
+  isOpen = true,
   setIsOpen,
   ...props
 }) {
@@ -22,7 +22,12 @@ export default function Modal({
   }
 
   return createPortal(
-    <dialog ref={dialog} onClose={handelClose} {...props}>
+    <dialog
+      ref={dialog}
+      onClose={handelClose}
+      {...props}
+      className="backdrop:opacity-50 backdrop:bg-[#000]"
+    >
       {isOpen && children}
     </dialog>,
     document.getElementById("modal")

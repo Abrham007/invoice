@@ -15,6 +15,30 @@ export default function InvoiceList() {
       <li className="w-full">
         <Invoice></Invoice>
       </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
+      <li className="w-full">
+        <Invoice></Invoice>
+      </li>
     </ul>
   );
 }
