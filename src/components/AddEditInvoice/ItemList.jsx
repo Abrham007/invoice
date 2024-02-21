@@ -1,4 +1,3 @@
-import InputText from "../InputText";
 import InputList from "./InputList";
 
 export default function ItemList() {

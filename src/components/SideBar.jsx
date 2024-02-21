@@ -1,7 +1,7 @@
 import logoIcon from "../assets/logo.svg";
 import avatarImg from "../assets/image-avatar.jpg";
-import IconMoon from "./IconMoon";
-import IconSun from "./IconSun";
+import IconMoon from "./UI/Icons/IconMoon";
+import IconSun from "./UI/Icons/IconSun";
 
 export default function SideBar() {
   let isDarkMode = document.documentElement.classList.contains("dark");

@@ -1,4 +1,4 @@
-import InputText from "../InputText";
+import InputText from "../UI/Inputs/InputText";
 export default function BillFrom() {
   return (
     <fieldset className="flex flex-col gap-6">

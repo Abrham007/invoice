@@ -1,5 +1,5 @@
 import { useMediaQuery } from "react-responsive";
-export default function InvoiceDetailTable() {
+export default function Table() {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <table className="flex flex-col bg-[#F9FAFE] dark:bg-4 rounded-lg">

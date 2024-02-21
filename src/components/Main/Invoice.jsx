@@ -1,5 +1,5 @@
-import rightIcon from "../assets/icon-arrow-right.svg";
-import Status from "./Status";
+import rightIcon from "../../assets/icon-arrow-right.svg";
+import Status from "../Status";
 export default function Invoice() {
   return (
     <button className="h-[134px] md:h-[72px] w-full p-6 md:p-0 grid grid-cols-[1fr_1fr] grid-rows-[2fr_1fr_1fr] gap-[9px] justify-items-start  md:flex md:gap-0 md:justify-center md:items-center bg-white dark:bg-3 rounded-lg shadow hover:border-[1px] hover:border-solid hover:border-1">

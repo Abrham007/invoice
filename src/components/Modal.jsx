@@ -1,7 +1,12 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-export default function Modal({ children, isOpen = true, setIsOpen }) {
+export default function Modal({
+  children,
+  isOpen = false,
+  setIsOpen,
+  ...props
+}) {
   const dialog = useRef();
 
   useEffect(() => {
@@ -17,11 +22,7 @@ export default function Modal({ children, isOpen = true, setIsOpen }) {
   }
 
   return createPortal(
-    <dialog
-      ref={dialog}
-      onClose={handelClose}
-      className="pb-[155px] absolute top-[105px] left-0 w-screen backdrop:opacity-50  backdrop:bg-[#000] backdrop::bg-origin-content"
-    >
+    <dialog ref={dialog} onClose={handelClose} {...props}>
       {isOpen && children}
     </dialog>,
     document.getElementById("modal")

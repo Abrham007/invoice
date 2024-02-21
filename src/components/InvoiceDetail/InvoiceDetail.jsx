@@ -1,8 +1,8 @@
-import Status from "./Status";
-import leftIcon from "../assets/icon-arrow-left.svg";
-import Address from "./Address";
-import InvoiceDetailTable from "./InvoiceDetailTable";
-import InvoiceDetailBtns from "./InvoiceDetailBtns";
+import Status from "../Status";
+import leftIcon from "../../assets/icon-arrow-left.svg";
+import Address from "../Address";
+import Table from "./Table";
+import ButtonGroup from "./ButtonGroup";
 
 export default function InvoiceDetail() {
   return (
@@ -18,7 +18,7 @@ export default function InvoiceDetail() {
           <p className="text-sm text-[#858BB2] dark:text-5">Status</p>
           <Status>Pending</Status>
           <div className="hidden md:flex md:gap-2 md:ml-auto">
-            <InvoiceDetailBtns></InvoiceDetailBtns>
+            <ButtonGroup></ButtonGroup>
           </div>
         </header>
         <div className="flex flex-col gap-8 p-6 bg-white dark:bg-3 rounded-lg">
@@ -81,11 +81,11 @@ export default function InvoiceDetail() {
               </strong>
             </p>
           </div>
-          <InvoiceDetailTable></InvoiceDetailTable>
+          <Table></Table>
         </div>
       </section>
       <footer className="md:hidden fixed bottom-0 left-0 w-screen h-[91px] px-6 flex gap-2 justify-center items-center shadow bg-white dark:bg-3">
-        <InvoiceDetailBtns></InvoiceDetailBtns>
+        <ButtonGroup></ButtonGroup>
       </footer>
     </main>
   );

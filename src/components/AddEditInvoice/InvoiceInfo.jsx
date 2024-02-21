@@ -1,6 +1,6 @@
-import InputDate from "../InputDate";
-import InputDropdown from "../InputDropdown";
-import InputText from "../InputText";
+import InputDate from "../UI/Inputs/InputDate";
+import InputDropdown from "../UI/Inputs/InputDropdown";
+import InputText from "../UI/Inputs/InputText";
 export default function InvoiceInfo() {
   return (
     <fieldset className="flex flex-col gap-6">

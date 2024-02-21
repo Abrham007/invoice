@@ -1,4 +1,4 @@
-import downIcon from "../assets/icon-arrow-down.svg";
+import downIcon from "../../../assets/icon-arrow-down.svg";
 export default function InputDropdown({ label }) {
   return (
     <div className="w-full relative flex flex-col gap-[9px] cursor-pointer">

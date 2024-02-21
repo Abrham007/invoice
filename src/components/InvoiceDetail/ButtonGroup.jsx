@@ -1,5 +1,5 @@
-import Button from "./Button";
-export default function InvoiceDetailBtns() {
+import Button from "../UI/Buttons/Button";
+export default function ButtonGroup() {
   return (
     <>
       <Button type="3">Edit</Button>

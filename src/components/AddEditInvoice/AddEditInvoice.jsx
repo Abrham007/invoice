@@ -1,4 +1,4 @@
-import Button from "../Button";
+import Button from "../UI/Buttons/Button";
 import BillFrom from "./BillFrom";
 import BillTo from "./BillTo";
 import InvoiceInfo from "./InvoiceInfo";

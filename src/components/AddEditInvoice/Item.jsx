@@ -1,7 +1,6 @@
-import InputText from "../InputText";
-import deleteIcon from "../../assets/icon-delete.svg";
+import InputText from "../UI/Inputs/InputText";
 import { useMediaQuery } from "react-responsive";
-import IconDelete from "../IconDelete";
+import IconDelete from "../UI/Icons/IconDelete";
 
 export default function Item() {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });

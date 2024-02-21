@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import IconCalendar from "./IconCalendar";
+import IconCalendar from "../Icons/IconCalendar";
 
 export default function InputDate({ lable, disabled = false }) {
   let isDarkMode = document.documentElement.classList.contains("dark");

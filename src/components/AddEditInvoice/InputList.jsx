@@ -1,8 +1,6 @@
-import Button from "../Button";
+import Button from "../UI/Buttons/Button";
 import Item from "./Item";
-import { useMediaQuery } from "react-responsive";
 export default function InputList() {
-  const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <div className="flex flex-col gap-[49px] md:gap-[15px]">
       <h4 className="hidden md:flex gap-4">
