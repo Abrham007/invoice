@@ -7,8 +7,9 @@ import leftIcon from "../../assets/icon-arrow-left.svg";
 import Modal from "../Modal";
 import { useMediaQuery } from "react-responsive";
 
-export default function AddEditInvoice({ Wrapper = "section" }) {
+export default function AddEditInvoice() {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
+  let Wrapper = "section";
 
   if (isBigScreen) {
     Wrapper = Modal;
