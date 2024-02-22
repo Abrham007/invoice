@@ -9,13 +9,19 @@ import { useMediaQuery } from "react-responsive";
 
 export default function AddEditInvoice() {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
-  let Wrapper = "section";
-
+  let Wrapper;
+  let wrapperStyle = "";
   if (isBigScreen) {
     Wrapper = Modal;
+    wrapperStyle +=
+      " min-h-screen w-[616px] md:pb-[80px] lg:pb-[0px] backdrop:opacity-50 backdrop:bg-[#000] md:backdrop:top-[80px] md:top-[80px] lg:backdrop:top-[0px] lg:top-[0px] lg:backdrop:left-[104px] lg:left-[104px] bg-white dark:bg-12";
+  } else {
+    Wrapper = "section";
+    wrapperStyle =
+      " absolute top-20 left-0 w-screen rounded-br-[20px] rounded-tr-[20px] bg-white dark:bg-12";
   }
   return (
-    <Wrapper className="pb-[155px] absolute md:fixed top-20 lg:top-0 left-0 lg:left-[103px] w-screen md:w-[616px]  rounded-br-[20px] rounded-tr-[20px]">
+    <Wrapper className={wrapperStyle}>
       <div className="p-6 pb-8 md:p-14 flex flex-col gap-[22px] bg-white dark:bg-12">
         <a href="#" className="flex gap-6 items-start  self-start md:hidden">
           <img src={leftIcon} alt=""></img>
@@ -33,7 +39,7 @@ export default function AddEditInvoice() {
           <ItemList></ItemList>
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 lg:left-[103px]  w-screen md:w-[616px]  p-6 flex gap-2 justify-end items-center bg-white dark:bg-3 shadow-xl md:rounded-r-[20px]">
+      <div className="sticky bottom-0 left-0 w-screen md:w-full  p-6 flex gap-2 justify-end items-center bg-white dark:bg-3 shadow-xl md:rounded-r-[20px]">
         <Button type="3">Cancel</Button>
         <Button type="2">Save Changes</Button>
       </div>
