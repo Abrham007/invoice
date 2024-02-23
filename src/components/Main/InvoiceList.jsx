@@ -4,7 +4,7 @@ export default function InvoiceList({ data }) {
   return (
     <ul className="w-full flex flex-col gap-4 list-none">
       {data.map((invoiceData) => (
-        <li className="w-full">
+        <li key={invoiceData.id} className="w-full">
           <Invoice {...invoiceData}></Invoice>
         </li>
       ))}
