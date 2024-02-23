@@ -3,7 +3,7 @@ import plusIcon from "../../assets/icon-plus.svg";
 import ButtonFilter from "../UI/Buttons/ButtonFilter";
 import { useMediaQuery } from "react-responsive";
 
-export default function Header() {
+export default function Header({ onChange }) {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
 
   function toggleTheme() {
@@ -24,7 +24,7 @@ export default function Header() {
         </p>
       </div>
       <div className="flex gap-5 md:gap-10">
-        <ButtonFilter>
+        <ButtonFilter onChange={onChange}>
           {isBigScreen ? "Filter by status" : "Filter"}
         </ButtonFilter>
         <Button type="1" onClick={toggleTheme}>
