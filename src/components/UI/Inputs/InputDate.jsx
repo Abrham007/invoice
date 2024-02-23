@@ -4,9 +4,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import IconCalendar from "../Icons/IconCalendar";
+import { useContext } from "react";
+import { ThemeContext } from "../../../theme/ThemeContext";
 
 export default function InputDate({ lable, disabled = false }) {
-  let isDarkMode = document.documentElement.classList.contains("dark");
+  const { theme } = useContext(ThemeContext);
+
+  let isDarkMode = theme === "dark" ? true : false;
+
   let color = "#0C0E16";
   let backgroundColor = "#FFF";
   let borderColor = "#DFE3FA";
@@ -16,6 +21,7 @@ export default function InputDate({ lable, disabled = false }) {
     backgroundColor = "#1E2139";
     borderColor = "#252945";
   }
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <label className="w-full flex flex-col gap-[9px]">

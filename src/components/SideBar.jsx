@@ -3,17 +3,12 @@ import avatarImg from "../assets/image-avatar.jpg";
 import IconMoon from "./UI/Icons/IconMoon";
 import IconSun from "./UI/Icons/IconSun";
 import useTheme from "../theme/useTheme";
+import { useContext } from "react";
+import { ThemeContext } from "../theme/ThemeContext";
 
 export default function SideBar() {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
-  function toggleTheme() {
-    if (theme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
-  }
   let isDarkMode = theme === "dark" ? true : false;
   return (
     <aside className="fixed top-0 left-0 z-5 lg:h-screen w-screen lg:w-[103px] lg:bg-white lg:dark:bg-12">
