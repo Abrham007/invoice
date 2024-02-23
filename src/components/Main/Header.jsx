@@ -3,16 +3,9 @@ import plusIcon from "../../assets/icon-plus.svg";
 import ButtonFilter from "../UI/Buttons/ButtonFilter";
 import { useMediaQuery } from "react-responsive";
 
-export default function Header({ onChange }) {
+export default function Header({ onChange, openAddInvoice }) {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
 
-  function toggleTheme() {
-    if (localStorage.theme === "dark") {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
-    }
-  }
   return (
     <header className="w-full flex justify-between">
       <div className="flex flex-col gap-[3px] md:gap-[6px]">
@@ -27,7 +20,7 @@ export default function Header({ onChange }) {
         <ButtonFilter onChange={onChange}>
           {isBigScreen ? "Filter by status" : "Filter"}
         </ButtonFilter>
-        <Button type="1" onClick={toggleTheme}>
+        <Button type="1" onClick={openAddInvoice}>
           <span className="w-8 h-8 rounded-full bg-white flex justify-center items-center">
             <img src={plusIcon} alt="" className="ml-0.4 mt-0.4"></img>
           </span>
