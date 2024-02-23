@@ -1,5 +1,6 @@
 import rightIcon from "../../assets/icon-arrow-right.svg";
 import Status from "../Status";
+import { Link } from "react-router-dom";
 export default function Invoice(props) {
   let date = new Date(props.paymentDue);
   let dueDate = new Intl.DateTimeFormat(undefined, {
@@ -8,7 +9,10 @@ export default function Invoice(props) {
     day: "2-digit",
   }).format(date);
   return (
-    <button className="h-[134px] md:h-[72px] w-full p-6  grid grid-cols-[1fr_1fr] grid-rows-[2fr_1fr_1fr] gap-[9px] justify-items-start  md:flex md:gap-[30px] md:justify-start md:items-center md:text-left bg-white dark:bg-3 rounded-lg shadow hover:border-[1px] hover:border-solid hover:border-1">
+    <Link
+      to={`invoicedetail/${props.id}`}
+      className="h-[134px] md:h-[72px] w-full p-6  grid grid-cols-[1fr_1fr] grid-rows-[2fr_1fr_1fr] gap-[9px] justify-items-start  md:flex md:gap-[30px] md:justify-start md:items-center md:text-left bg-white dark:bg-3 rounded-lg shadow hover:border-[1px] hover:border-solid hover:border-1"
+    >
       <span className=" text-8 dark:text-white text-base font-bold md:flex-1">
         <span className="text-7 font-bold text-base">#</span>
         {props.id}
@@ -26,6 +30,6 @@ export default function Invoice(props) {
       <span className="hidden md:inline-block">
         <img src={rightIcon} alt=""></img>
       </span>
-    </button>
+    </Link>
   );
 }

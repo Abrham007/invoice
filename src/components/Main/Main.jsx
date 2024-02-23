@@ -3,10 +3,20 @@ import Header from "./Header";
 import InvoiceList from "./InvoiceList";
 import { useContext, useState } from "react";
 import { DataContext } from "../../store/DataContext";
+import AddEditInvoice from "../AddEditInvoice/AddEditInvoice";
 
-export default function Main({ openAddInvoice }) {
+export default function Main() {
   const { data } = useContext(DataContext);
   const [invoiceList, setinvoiceList] = useState(data);
+  const [isAddOpen, setAddOpen] = useState(false);
+
+  function openAddInvoice() {
+    setAddOpen(true);
+  }
+
+  function closeAddInvoice() {
+    setAddOpen(false);
+  }
 
   function handleFilterStatus(e) {
     switch (e.target.value) {
@@ -37,6 +47,12 @@ export default function Main({ openAddInvoice }) {
         <InvoiceList data={invoiceList}></InvoiceList>
       ) : (
         <InvoiceListEmpty></InvoiceListEmpty>
+      )}
+      {isAddOpen && (
+        <AddEditInvoice
+          isOpen={isAddOpen}
+          handleClose={closeAddInvoice}
+        ></AddEditInvoice>
       )}
     </main>
   );

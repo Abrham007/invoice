@@ -5,21 +5,22 @@ import Table from "./Table";
 import ButtonGroup from "./ButtonGroup";
 import { useContext } from "react";
 import { DataContext } from "../../store/DataContext";
+import { Link, useParams } from "react-router-dom";
 
 export default function InvoiceDetail() {
-  let id = "XM9141";
+  let { id } = useParams();
   const { data } = useContext(DataContext);
 
   const currentInvoice = data.find((invoice) => invoice.id === id);
 
   return (
     <main className="mx-auto min-h-screen py-[108px] md:py-[142px] lg:py-[78px] flex flex-col gap-8 w-[327px] md:w-[730px]">
-      <a href="#" className="flex gap-6  items-start self-start">
+      <Link to={`/`} className="flex gap-6  items-start self-start">
         <img src={leftIcon} alt=""></img>
         <span className="text-base text-8 dark:text-white hover:text-7">
           Go Back
         </span>
-      </a>
+      </Link>
       <section className="flex flex-col gap-4">
         <header className="px-6 h-[91px] flex justify-between md:gap-5 md:justify-start items-center bg-white dark:bg-3 rounded-lg shadow">
           <p className="text-sm text-[#858BB2] dark:text-5">Status</p>

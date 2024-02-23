@@ -14,8 +14,8 @@ export default function Status({ children }) {
       text = "Pending";
       break;
     case "draft":
-      styleOfDot += " bg-[#373B53]";
-      styleOfText += " text-[#373B53]";
+      styleOfDot += " bg-[#373B53] dark:bg-5";
+      styleOfText += " text-[#373B53] dark:text-5";
       text = "Draft";
       break;
     default:
