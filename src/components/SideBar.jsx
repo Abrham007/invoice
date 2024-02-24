@@ -2,7 +2,6 @@ import logoIcon from "../assets/logo.svg";
 import avatarImg from "../assets/image-avatar.jpg";
 import IconMoon from "./UI/Icons/IconMoon";
 import IconSun from "./UI/Icons/IconSun";
-import useTheme from "../theme/useTheme";
 import { useContext } from "react";
 import { ThemeContext } from "../theme/ThemeContext";
 
