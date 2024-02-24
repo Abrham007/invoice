@@ -8,10 +8,10 @@ export default function Delete() {
         Are you sure you want to delete invoice #XM9141? This action cannot be
         undone.
       </p>
-      <div className="flex justify-end gap-2 mt-auto">
+      <form method="dialog" className="flex justify-end gap-2 mt-auto">
         <Button type="3">Cancel</Button>
         <Button type="5">Delete</Button>
-      </div>
+      </form>
     </div>
   );
 }
