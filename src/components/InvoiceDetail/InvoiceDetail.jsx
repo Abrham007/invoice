@@ -9,6 +9,7 @@ import { Link, useParams } from "react-router-dom";
 
 export default function InvoiceDetail() {
   let { id } = useParams();
+
   const { data } = useContext(DataContext);
 
   const currentInvoice = data.find((invoice) => invoice.id === id);
@@ -26,7 +27,7 @@ export default function InvoiceDetail() {
           <p className="text-sm text-[#858BB2] dark:text-5">Status</p>
           <Status>{currentInvoice.status}</Status>
           <div className="hidden md:flex md:gap-2 md:ml-auto">
-            <ButtonGroup></ButtonGroup>
+            <ButtonGroup id={id}></ButtonGroup>
           </div>
         </header>
         <div className="flex flex-col gap-8 p-6 bg-white dark:bg-3 rounded-lg">
@@ -88,7 +89,7 @@ export default function InvoiceDetail() {
         </div>
       </section>
       <footer className="md:hidden fixed bottom-0 left-0 w-screen h-[91px] px-6 flex gap-2 justify-center items-center shadow bg-white dark:bg-3">
-        <ButtonGroup></ButtonGroup>
+        <ButtonGroup id={id}></ButtonGroup>
       </footer>
     </main>
   );
