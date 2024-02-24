@@ -7,7 +7,7 @@ import IconCalendar from "../Icons/IconCalendar";
 import { useContext } from "react";
 import { ThemeContext } from "../../../theme/ThemeContext";
 
-export default function InputDate({ lable, disabled = false }) {
+export default function InputDate({ lable, disabled = false, defaultValue }) {
   const { theme } = useContext(ThemeContext);
 
   let isDarkMode = theme === "dark" ? true : false;
@@ -31,7 +31,7 @@ export default function InputDate({ lable, disabled = false }) {
           disabled={disabled}
           className="cursor-pointer"
           format="DD MMM YYYY"
-          defaultValue={dayjs("2022-08-17")}
+          defaultValue={dayjs(`${defaultValue}`)}
           PopperProps={{
             style: { zIndex: 1000000 },
           }}
@@ -64,7 +64,7 @@ export default function InputDate({ lable, disabled = false }) {
           }}
           sx={{
             "& .MuiDateCalendar-root": {
-              borderRadius: "8px",
+              borderRadius: "4px",
             },
             "& .MuiOutlinedInput-root": {
               backgroundColor: `${backgroundColor}`,
