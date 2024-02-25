@@ -6,6 +6,7 @@ import ItemList from "./ItemList";
 import leftIcon from "../../assets/icon-arrow-left.svg";
 import { useState } from "react";
 import Modal from "../Modal";
+import SideBar from "../SideBar";
 
 export default function AddEditInvoice({ isOpen, handleClose, id }) {
   let title = (
@@ -25,10 +26,11 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
   }
   return (
     <Modal
-      className="min-h-screen max-w-[100%] md:w-[616px] pb-[80px] lg:pb-[0px] md:rounded-br-[20px] md:rounded-tr-[20px]  backdrop:opacity-50 backdrop:bg-[#000] backdrop:top-[80px] top-[80px] lg:backdrop:top-[0px] lg:top-[0px] lg:backdrop:left-[104px] lg:left-[104px] bg-white dark:bg-12"
+      className="min-h-screen  max-w-[100%] md:w-[616px] pb-[80px] lg:pb-[0px] md:rounded-br-[20px] md:rounded-tr-[20px]  backdrop:opacity-50 backdrop:bg-[#000] backdrop:top-[80px] top-[80px] lg:backdrop:top-[0px] lg:top-[0px] lg:backdrop:left-[104px] lg:left-[104px] bg-white dark:bg-12"
       isOpen={isOpen}
       setIsOpen={handleClose}
     >
+      <SideBar></SideBar>
       <div className="p-6 pb-8 md:p-14 flex flex-col gap-[22px] bg-white dark:bg-12">
         <button
           onClick={closeInvoice}
