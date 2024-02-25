@@ -9,7 +9,7 @@ export default function Item(props) {
 
   return (
     <fieldset className="min-w-full flex flex-col md:flex-row gap-[15px]">
-      <span className="w-[200px] shrink-0">
+      <span className="md:w-[200px] shrink-0">
         {isBigScreen ? (
           <input
             className={inputCss}
@@ -59,11 +59,11 @@ export default function Item(props) {
         <span className="w-[56px] flex flex-col gap-[27px] md:justify-center">
           <span className="text-sm text-7 dark:text-5 md:hidden">Total</span>
           <span className="text-base text-7 dark:text-5 font-bold">
-            {props ? Number(props.total).toFixed(2) : ""}
+            {props?.total ? Number(props.total).toFixed(2) : ""}
           </span>
         </span>
         <span className=" flex justify-end items-end pb-4 ">
-          <button className="">
+          <button onClick={() => props.removeItem(props.index)}>
             <IconDelete></IconDelete>
           </button>
         </span>
