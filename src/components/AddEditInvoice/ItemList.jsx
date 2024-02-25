@@ -13,8 +13,12 @@ export default function ItemList({ id }) {
     setItemList((prevValue) => [...prevValue, {}]);
   }
 
-  function removeItem(name) {
-    setItemList((prevValue) => prevValue.filter((item) => item.name !== name));
+  function removeItem(index) {
+    setItemList((prevValue) => {
+      let tempValue = [...prevValue];
+      tempValue.splice(index, 1);
+      return tempValue;
+    });
   }
 
   return (
@@ -39,9 +43,9 @@ export default function ItemList({ id }) {
           <span className="w-[56px] text-sm text-7 dark:text-5">Total</span>
         </h4>
         <ul className="flex flex-col gap-[49px] md:gap-[18px] list-none">
-          {itemList.map((item) => (
-            <li key={item.name} className=" group">
-              <Item {...item} removeItem={removeItem}></Item>
+          {itemList.map((item, index) => (
+            <li key={index} className=" group">
+              <Item {...item} removeItem={removeItem} index={index}></Item>
             </li>
           ))}
         </ul>
