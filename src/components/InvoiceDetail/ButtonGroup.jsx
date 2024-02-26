@@ -17,13 +17,13 @@ export default function ButtonGroup({ id }) {
 
   return (
     <>
-      <Button type="3" onClick={openEditInvoice}>
+      <Button $type="3" onClick={openEditInvoice}>
         Edit
       </Button>
-      <Button type="5" onClick={openDelete}>
+      <Button $type="5" onClick={openDelete}>
         Delete
       </Button>
-      <Button type="2">Mark as Paid</Button>
+      <Button $type="2">Mark as Paid</Button>
       <Modal
         isOpen={isDeleteOpen}
         setIsOpen={setDeleteOpen}
