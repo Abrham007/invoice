@@ -3,7 +3,7 @@ import InputDropdown from "../UI/Inputs/InputDropdown";
 import InputText from "../UI/Inputs/InputText";
 import { useContext } from "react";
 import { DataContext } from "../../store/DataContext";
-export default function InvoiceInfo({ id }) {
+export default function InvoiceInfo({ id, register, errors }) {
   const { data } = useContext(DataContext);
   const currentInvoice = data.find((invoice) => invoice.id === id);
 
@@ -11,6 +11,9 @@ export default function InvoiceInfo({ id }) {
     <fieldset className="flex flex-col gap-6">
       <div className="flex flex-col md:flex-row gap-6">
         <InputDate
+          name="invoiceDate"
+          register={register}
+          errors={errors}
           lable="Invoice Date"
           defaultValue={
             id ? currentInvoice.createdAt : new Date().toDateString()
@@ -18,12 +21,18 @@ export default function InvoiceInfo({ id }) {
           disabled={id ? true : false}
         ></InputDate>
         <InputDropdown
+          name="paymentTerms"
+          register={register}
+          errors={errors}
           label="Payment Terms"
           defaultValue={id ? currentInvoice.paymentTerms : 30}
         ></InputDropdown>
       </div>
 
       <InputText
+        name="description"
+        register={register}
+        errors={errors}
         label="Project Description"
         defaultValue={id ? currentInvoice.description : ""}
         placeholder="e.g. Graphic Design Service"
