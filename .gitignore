@@ -30,3 +30,9 @@ yarn-error.log*
 
 .DS_Store
 .prettierignore
+
+# firebase admin 
+
+firebase.json
+.env
+server/node_modules

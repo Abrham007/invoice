@@ -1,14 +1,16 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+import invoiceRoute from "./Routes/invoiceRoute.js";
 
-dotenv.config();
+import config from "./config.js";
 
-const PORT = process.env.PORT || 4000;
-const HOST_URL = process.env.HOST_URL;
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.listen(PORT, () => console.log(`Server is live @ ${HOST_URL}`));
+app.use("/api", invoiceRoute);
+
+app.listen(config.port, () =>
+  console.log(`Server is live @ ${config.hostUrl}`)
+);
