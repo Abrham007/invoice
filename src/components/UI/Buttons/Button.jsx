@@ -1,6 +1,6 @@
-export default function Button({ children, type, ...props }) {
+export default function Button({ children, $type, ...props }) {
   let cssClass = "";
-  switch (type) {
+  switch ($type) {
     case "1":
       cssClass =
         "pl-[8px] pr-[17px] h-[48px] rounded-full bg-1 flex gap-4 justify-center items-center self-center text-white text-base font-bold hover:bg-2 outline-none";

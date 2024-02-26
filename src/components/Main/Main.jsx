@@ -1,12 +1,13 @@
 import InvoiceListEmpty from "./InvoiceListEmpty";
 import Header from "./Header";
 import InvoiceList from "./InvoiceList";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../store/DataContext";
 import AddEditInvoice from "../AddEditInvoice/AddEditInvoice";
 
 export default function Main() {
-  const { data } = useContext(DataContext);
+  const { data, isLoading, error } = useContext(DataContext);
+
   const [invoiceList, setinvoiceList] = useState(data);
   const [isAddOpen, setAddOpen] = useState(false);
 
@@ -36,6 +37,20 @@ export default function Main() {
         setinvoiceList(data);
     }
   }
+  let invoices;
+  if (data.length !== 0) {
+    invoices = <InvoiceList data={invoiceList}></InvoiceList>;
+  } else {
+    if (isLoading) {
+      invoices = <InvoiceListEmpty reason="loading"></InvoiceListEmpty>;
+    } else {
+      invoices = <InvoiceListEmpty reason="empty"></InvoiceListEmpty>;
+    }
+  }
+
+  useEffect(() => {
+    setinvoiceList(data);
+  }, [data]);
 
   return (
     <main className="w-[327px] md:w-[672px] lg:w-[730px] min-h-screen py-[108px] md:py-[142px] lg:py-[78px] mx-auto flex flex-col item-center gap-[32px] md:gap-[55px] lg:gap-[70px]">
@@ -43,11 +58,7 @@ export default function Main() {
         onChange={handleFilterStatus}
         openAddInvoice={openAddInvoice}
       ></Header>
-      {data.length !== 0 ? (
-        <InvoiceList data={invoiceList}></InvoiceList>
-      ) : (
-        <InvoiceListEmpty></InvoiceListEmpty>
-      )}
+      {invoices}
       {isAddOpen && (
         <AddEditInvoice
           isOpen={isAddOpen}

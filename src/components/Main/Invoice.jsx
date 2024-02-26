@@ -15,7 +15,7 @@ export default function Invoice(props) {
     >
       <span className=" text-8 dark:text-white text-base font-bold md:flex-1">
         <span className="text-7 font-bold text-base">#</span>
-        {props.id}
+        {String(props.id).slice(0, 7).toUpperCase()}
       </span>
       <span className="col-start-1 col-end-2 row-start-2 row-end-3 self-end text-7 dark:text-5 text-sm  md:self-center">
         Due {dueDate}
