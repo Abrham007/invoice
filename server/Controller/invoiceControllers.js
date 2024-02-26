@@ -16,8 +16,8 @@ const db = getFirestore(firebase);
 export async function createInvoice(req, res, next) {
   try {
     const data = req.body;
-    await addDoc(collection(db, "invoices"), data);
-    res.status(200).send("invoice created successfully");
+    const newInvoice = await addDoc(collection(db, "invoices"), data);
+    res.status(200).send(newInvoice);
   } catch (error) {
     res.status(400).send(error.message);
   }
