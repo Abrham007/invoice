@@ -6,13 +6,14 @@ import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import IconCalendar from "../Icons/IconCalendar";
 import { useContext } from "react";
 import { ThemeContext } from "../../../theme/ThemeContext";
+import { Controller } from "react-hook-form";
 
 export default function InputDate({
   lable,
   disabled = false,
   defaultValue,
   name,
-  register,
+  control,
 }) {
   const { theme } = useContext(ThemeContext);
 
@@ -33,68 +34,74 @@ export default function InputDate({
       <label className="w-full flex flex-col gap-[9px]">
         <span className="text-sm text-7 dark:text-5">{lable}</span>
 
-        <DesktopDatePicker
+        <Controller
           name={name}
-          {...register(`${name}`)}
-          disabled={disabled}
-          className="cursor-pointer"
-          format="DD MMM YYYY"
+          control={control}
           defaultValue={dayjs(`${defaultValue}`)}
-          PopperProps={{
-            style: { zIndex: 1000000 },
-          }}
-          slots={{ openPickerIcon: IconCalendar }}
-          slotProps={{
-            popper: {
-              disablePortal: true,
-            },
-            openPickerButton: {
-              className: "w-[40px] h-[40px]",
-            },
-            layout: {
-              sx: {
-                backgroundColor: `${backgroundColor}`,
-                color: `${color}`,
-                "& .MuiPickersDay-root": {
-                  color: `${color}`,
+          render={({ field }) => (
+            <DesktopDatePicker
+              {...field}
+              disabled={disabled}
+              className="cursor-pointer"
+              format="DD MMM YYYY"
+              PopperProps={{
+                style: { zIndex: 1000000 },
+              }}
+              slots={{ openPickerIcon: IconCalendar }}
+              slotProps={{
+                popper: {
+                  disablePortal: true,
                 },
-                "& .MuiPickersCalendarHeader-switchViewButton": {
-                  color: `${color}`,
+                openPickerButton: {
+                  className: "w-[40px] h-[40px]",
                 },
-                "& .MuiTypography-root": {
-                  color: `${color}`,
+                layout: {
+                  sx: {
+                    backgroundColor: `${backgroundColor}`,
+                    color: `${color}`,
+                    "& .MuiPickersDay-root": {
+                      color: `${color}`,
+                    },
+                    "& .MuiPickersCalendarHeader-switchViewButton": {
+                      color: `${color}`,
+                    },
+                    "& .MuiTypography-root": {
+                      color: `${color}`,
+                    },
+                    "& .MuiSvgIcon-root": {
+                      color: `${color}`,
+                    },
+                  },
                 },
-                "& .MuiSvgIcon-root": {
-                  color: `${color}`,
+              }}
+              sx={{
+                "& .MuiDateCalendar-root": {
+                  borderRadius: "4px",
                 },
-              },
-            },
-          }}
-          sx={{
-            "& .MuiDateCalendar-root": {
-              borderRadius: "4px",
-            },
-            "& .MuiOutlinedInput-root": {
-              backgroundColor: `${backgroundColor}`,
-              color: `${color}`,
-              fontFamily: "League Spartan, sans-serif",
-              fontSize: "0.9375rem",
-              lineHeight: "0.9375rem",
-              letterSpacing: "-0.01563",
-              fontWeight: "bold",
-            },
-            "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-              border: `1px solid ${borderColor}`,
-            },
-            "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-              border: "1px solid #9277FF",
-            },
-            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-              {
-                border: "1px solid #9277FF",
-              },
-          }}
-        />
+                "& .MuiOutlinedInput-root": {
+                  backgroundColor: `${backgroundColor}`,
+                  color: `${color}`,
+                  fontFamily: "League Spartan, sans-serif",
+                  fontSize: "0.9375rem",
+                  lineHeight: "0.9375rem",
+                  letterSpacing: "-0.01563",
+                  fontWeight: "bold",
+                },
+                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                  border: `1px solid ${borderColor}`,
+                },
+                "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline":
+                  {
+                    border: "1px solid #9277FF",
+                  },
+                "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
+                  {
+                    border: "1px solid #9277FF",
+                  },
+              }}
+            />
+          )}
+        ></Controller>
       </label>
     </LocalizationProvider>
   );

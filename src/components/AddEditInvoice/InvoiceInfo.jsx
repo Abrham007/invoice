@@ -12,9 +12,8 @@ export default function InvoiceInfo({ id, register, errors, control }) {
     <fieldset className="flex flex-col gap-6">
       <div className="flex flex-col md:flex-row gap-6">
         <InputDate
+          control={control}
           name="invoiceDate"
-          register={register}
-          errors={errors}
           lable="Invoice Date"
           defaultValue={
             id ? currentInvoice.createdAt : new Date().toDateString()
@@ -24,12 +23,13 @@ export default function InvoiceInfo({ id, register, errors, control }) {
         <Controller
           control={control}
           name="paymentTerms"
-          render={({ field: { value, onChange } }) => (
+          defaultValue={id ? currentInvoice.paymentTerms : 30}
+          render={({ field: { value, onChange, onBlur } }) => (
             <InputDropdown
               value={value}
               onChange={onChange}
+              onBlur={onBlur}
               label="Payment Terms"
-              defaultValue={id ? currentInvoice.paymentTerms : 30}
             ></InputDropdown>
           )}
         ></Controller>
