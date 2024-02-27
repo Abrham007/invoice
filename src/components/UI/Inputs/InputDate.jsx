@@ -7,7 +7,13 @@ import IconCalendar from "../Icons/IconCalendar";
 import { useContext } from "react";
 import { ThemeContext } from "../../../theme/ThemeContext";
 
-export default function InputDate({ lable, disabled = false, defaultValue }) {
+export default function InputDate({
+  lable,
+  disabled = false,
+  defaultValue,
+  name,
+  register,
+}) {
   const { theme } = useContext(ThemeContext);
 
   let isDarkMode = theme === "dark" ? true : false;
@@ -28,6 +34,8 @@ export default function InputDate({ lable, disabled = false, defaultValue }) {
         <span className="text-sm text-7 dark:text-5">{lable}</span>
 
         <DesktopDatePicker
+          name={name}
+          {...register(`${name}`)}
           disabled={disabled}
           className="cursor-pointer"
           format="DD MMM YYYY"
