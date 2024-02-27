@@ -7,7 +7,7 @@ import Modal from "../Modal";
 import SideBar from "../SideBar";
 import { useState } from "react";
 import ButtonGroup from "./ButtonGroup";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 export default function AddEditInvoice({ isOpen, handleClose, id }) {
   const [newInvoice, setNewInvoice] = useState();
@@ -15,8 +15,15 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm();
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "items",
+    defaultValue: [{ name: "Web Design", quantity: 1, price: 6155.91 }],
+  });
 
   function onSubmit(data) {
     console.log(data);
@@ -60,6 +67,7 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
         <form
           id="invoiceForm"
           onSubmit={handleSubmit(onSubmit)}
+          noValidate
           className=" flex flex-col gap-[41px] "
         >
           <BillFrom id={id} register={register} errors={errors}></BillFrom>
@@ -68,8 +76,16 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
             id={id}
             register={register}
             errors={errors}
+            control={control}
           ></InvoiceInfo>
-          <ItemList id={id} register={register} errors={errors}></ItemList>
+          <ItemList
+            id={id}
+            fields={fields}
+            register={register}
+            errors={errors}
+            append={append}
+            remove={remove}
+          ></ItemList>
         </form>
       </div>
       <ButtonGroup id={id} handleClose={handleClose}></ButtonGroup>
