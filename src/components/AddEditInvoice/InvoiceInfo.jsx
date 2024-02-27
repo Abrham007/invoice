@@ -3,7 +3,8 @@ import InputDropdown from "../UI/Inputs/InputDropdown";
 import InputText from "../UI/Inputs/InputText";
 import { useContext } from "react";
 import { DataContext } from "../../store/DataContext";
-export default function InvoiceInfo({ id, register, errors }) {
+import { Controller } from "react-hook-form";
+export default function InvoiceInfo({ id, register, errors, control }) {
   const { data } = useContext(DataContext);
   const currentInvoice = data.find((invoice) => invoice.id === id);
 
@@ -20,13 +21,18 @@ export default function InvoiceInfo({ id, register, errors }) {
           }
           disabled={id ? true : false}
         ></InputDate>
-        <InputDropdown
+        <Controller
+          control={control}
           name="paymentTerms"
-          register={register}
-          errors={errors}
-          label="Payment Terms"
-          defaultValue={id ? currentInvoice.paymentTerms : 30}
-        ></InputDropdown>
+          render={({ field: { value, onChange } }) => (
+            <InputDropdown
+              value={value}
+              onChange={onChange}
+              label="Payment Terms"
+              defaultValue={id ? currentInvoice.paymentTerms : 30}
+            ></InputDropdown>
+          )}
+        ></Controller>
       </div>
 
       <InputText
