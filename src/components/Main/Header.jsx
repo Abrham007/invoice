@@ -24,7 +24,7 @@ export default function Header({ onChange, openAddInvoice, data }) {
         </ButtonFilter>
         <Button $type="1" onClick={openAddInvoice}>
           <span className="w-8 h-8 rounded-full bg-white flex justify-center items-center">
-            <img src={plusIcon} alt="" className="ml-0.4 mt-0.4"></img>
+            <img src={plusIcon} alt=""></img>
           </span>
           <span>{isBigScreen ? "New Invoice" : "New"}</span>
         </Button>
