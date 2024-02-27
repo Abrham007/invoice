@@ -3,7 +3,7 @@ import plusIcon from "../../assets/icon-plus.svg";
 import ButtonFilter from "../UI/Buttons/ButtonFilter";
 import { useMediaQuery } from "react-responsive";
 
-export default function Header({ onChange, openAddInvoice }) {
+export default function Header({ onChange, openAddInvoice, data }) {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
 
   return (
@@ -13,7 +13,9 @@ export default function Header({ onChange, openAddInvoice }) {
           Invoices
         </h1>
         <p className="text-sm text-6 dark:text-5">
-          {isBigScreen ? "There are 7 total invoices" : "7 invoices"}
+          {isBigScreen
+            ? `There are ${data.length} total invoices`
+            : `${data.length} invoices`}
         </p>
       </div>
       <div className="flex gap-5 md:gap-10">
