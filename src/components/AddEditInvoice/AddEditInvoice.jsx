@@ -8,9 +8,10 @@ import SideBar from "../SideBar";
 import { useState } from "react";
 import ButtonGroup from "./ButtonGroup";
 import { useForm, useFieldArray } from "react-hook-form";
+import ErrorList from "./ErrorList";
 
 export default function AddEditInvoice({ isOpen, handleClose, id }) {
-  const [newInvoice, setNewInvoice] = useState();
+  const [errorItems, setErrorItems] = useState(false);
   const {
     register,
     handleSubmit,
@@ -34,6 +35,14 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
       ...watchItems[index],
     };
   });
+
+  function onSubmitClick() {
+    if (controlledFields.length === 0) {
+      setErrorItems(true);
+    } else {
+      setErrorItems(false);
+    }
+  }
 
   function onSubmit(data) {
     console.log(data);
@@ -77,7 +86,6 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
         <form
           id="invoiceForm"
           onSubmit={handleSubmit(onSubmit)}
-          noValidate
           className=" flex flex-col gap-[41px] "
         >
           <BillFrom id={id} register={register} errors={errors}></BillFrom>
@@ -97,8 +105,14 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
             remove={remove}
           ></ItemList>
         </form>
+        <ErrorList errors={errors} errorItems={errorItems}></ErrorList>
       </div>
-      <ButtonGroup id={id} handleClose={handleClose}></ButtonGroup>
+
+      <ButtonGroup
+        id={id}
+        handleClose={handleClose}
+        handleSubmit={onSubmitClick}
+      ></ButtonGroup>
     </Modal>
   );
 }
