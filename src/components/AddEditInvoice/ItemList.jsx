@@ -5,7 +5,7 @@ import { DataContext } from "../../store/DataContext";
 
 export default function ItemList({
   id,
-  fields,
+  controlledFields,
   append,
   remove,
   register,
@@ -33,10 +33,10 @@ export default function ItemList({
           <span className="w-[56px] text-sm text-7 dark:text-5">Total</span>
         </h4>
         <ul className="flex flex-col gap-[49px] md:gap-[18px] list-none">
-          {fields.map((field, index) => (
-            <li key={index} className=" group">
+          {controlledFields.map((field, index) => (
+            <li key={field.id} className=" group">
               <Item
-                key={field.id}
+                field={field}
                 index={index}
                 register={register}
                 errors={errors}
@@ -47,7 +47,9 @@ export default function ItemList({
         </ul>
         <Button
           type="button"
-          onClick={() => append({ name: "", quantity: "", price: "" })}
+          onClick={() =>
+            append({ name: "", quantity: "", price: "", total: "" })
+          }
           $type="3"
         >
           + Add New Item

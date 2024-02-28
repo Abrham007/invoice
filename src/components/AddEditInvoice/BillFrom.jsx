@@ -8,34 +8,34 @@ export default function BillFrom({ id, register, errors }) {
     <fieldset className="flex flex-col gap-6">
       <h3 className="text-base text-1">Bill From</h3>
       <InputText
-        name="senderStreet"
+        name="senderAddress.street"
         register={register}
-        errors={errors}
+        errors={errors.senderAddress?.street}
         label="Street Address"
         defaultValue={id ? currentInvoice.senderAddress.street : ""}
       ></InputText>
       <div className="flex flex-col gap-6 md:flex-row">
         <div className="flex gap-6 md:w-2/3">
           <InputText
-            name="senderCity"
+            name="senderAddress.city"
             register={register}
-            errors={errors}
+            errors={errors.senderAddress?.city}
             label="City"
             defaultValue={id ? currentInvoice.senderAddress.city : ""}
           ></InputText>
           <InputText
-            name="senderPostCode"
+            name="senderAddress.postCode"
             register={register}
-            errors={errors}
+            errors={errors.senderAddress?.postCode}
             label="Post Code"
             defaultValue={id ? currentInvoice.senderAddress.postCode : ""}
           ></InputText>
         </div>
         <div className="md:w-1/3">
           <InputText
-            name="senderCountry"
+            name="senderAddress.country"
             register={register}
-            errors={errors}
+            errors={errors.senderAddress?.country}
             label="Country"
             defaultValue={id ? currentInvoice.senderAddress.country : ""}
           ></InputText>

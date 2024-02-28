@@ -38,7 +38,7 @@ export default function InvoiceInfo({ id, register, errors, control }) {
       <InputText
         name="description"
         register={register}
-        errors={errors}
+        errors={errors?.description}
         label="Project Description"
         defaultValue={id ? currentInvoice.description : ""}
         placeholder="e.g. Graphic Design Service"
