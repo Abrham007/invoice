@@ -37,10 +37,11 @@ export default function InputDate({
         <Controller
           name={name}
           control={control}
-          defaultValue={dayjs(`${defaultValue}`)}
           render={({ field }) => (
             <DesktopDatePicker
-              {...field}
+              onBlur={field.onBlur}
+              onChange={field.onChange}
+              defaultValue={dayjs(`${field.value}`)}
               disabled={disabled}
               className="cursor-pointer"
               format="DD MMM YYYY"
