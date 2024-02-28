@@ -11,9 +11,7 @@ export default function ButtonGroup({ handleSubmit, handleClose, id }) {
         <Button $type="3" onClick={closeInvoice}>
           Cancel
         </Button>
-        <Button $type="2" onClick={handleSubmit}>
-          Save Changes
-        </Button>
+        <Button $type="2">Save Changes</Button>
       </div>
     );
   } else {
@@ -25,12 +23,7 @@ export default function ButtonGroup({ handleSubmit, handleClose, id }) {
 
         <div className="flex gap-2">
           <Button $type="4">Save as Draft</Button>
-          <Button
-            $type="2"
-            form="invoiceForm"
-            type="submit"
-            onClick={handleSubmit}
-          >
+          <Button $type="2" form="invoiceForm" type="submit">
             Save & Send
           </Button>
         </div>
