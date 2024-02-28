@@ -15,6 +15,7 @@ export default function Item(props) {
             placeholder="0"
             name="quantity"
             label="Qty."
+            type="number"
           ></ItemInput>
         </span>
         <span className="w-[100px] shrink-0">
@@ -23,15 +24,24 @@ export default function Item(props) {
             placeholder="0.00"
             name="price"
             label="Price"
+            type="number"
           ></ItemInput>
         </span>
         <span className="w-[56px] flex flex-col gap-[27px] md:justify-center">
-          <span className="text-sm text-7 dark:text-5 md:hidden">Total</span>
+          <ItemInput
+            {...props}
+            placeholder="0.00"
+            name="total"
+            label="Total"
+            value={Number(props.field.quantity * props.field.price).toFixed(2)}
+          ></ItemInput>
+
+          {/* <span className="text-sm text-7 dark:text-5 md:hidden">Total</span>
           <span className="text-base text-7 dark:text-5 font-bold">
             {props.fields?.total
               ? Number(props.fields.total).toFixed(2)
               : Number(props.field.quantity * props.field.price).toFixed(2)}
-          </span>
+          </span> */}
         </span>
         <span className=" flex justify-end items-end pb-4 ">
           <button type="button" onClick={() => props.remove(props.index)}>
