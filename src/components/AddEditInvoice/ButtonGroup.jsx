@@ -1,6 +1,6 @@
 import Button from "../UI/Buttons/Button";
 
-export default function ButtonGroup({ handleClose, id }) {
+export default function ButtonGroup({ handleSubmit, handleClose, id }) {
   function closeInvoice() {
     handleClose();
   }
@@ -11,7 +11,9 @@ export default function ButtonGroup({ handleClose, id }) {
         <Button $type="3" onClick={closeInvoice}>
           Cancel
         </Button>
-        <Button $type="2">Save Changes</Button>
+        <Button $type="2" onClick={handleSubmit}>
+          Save Changes
+        </Button>
       </div>
     );
   } else {
@@ -23,7 +25,12 @@ export default function ButtonGroup({ handleClose, id }) {
 
         <div className="flex gap-2">
           <Button $type="4">Save as Draft</Button>
-          <Button $type="2" form="invoiceForm" type="submit">
+          <Button
+            $type="2"
+            form="invoiceForm"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Save & Send
           </Button>
         </div>
