@@ -22,7 +22,17 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
   const { fields, append, remove } = useFieldArray({
     control,
     name: "items",
-    defaultValue: [{ name: "Web Design", quantity: 1, price: 6155.91 }],
+    defaultValue: [
+      { name: "Web Design", quantity: 1, price: 6155.91, total: 6155.91 },
+    ],
+  });
+
+  const watchItems = watch("items");
+  const controlledFields = fields.map((field, index) => {
+    return {
+      ...field,
+      ...watchItems[index],
+    };
   });
 
   function onSubmit(data) {
@@ -80,7 +90,7 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
           ></InvoiceInfo>
           <ItemList
             id={id}
-            fields={fields}
+            controlledFields={controlledFields}
             register={register}
             errors={errors}
             append={append}
