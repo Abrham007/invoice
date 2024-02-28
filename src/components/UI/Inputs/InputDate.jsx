@@ -45,7 +45,7 @@ export default function InputDate({
               className="cursor-pointer"
               format="DD MMM YYYY"
               PopperProps={{
-                style: { zIndex: 1000000 },
+                style: { zIndex: 1000 },
               }}
               slots={{ openPickerIcon: IconCalendar }}
               slotProps={{
