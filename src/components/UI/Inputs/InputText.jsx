@@ -4,6 +4,7 @@ export default function InputText({
   register = () => {},
   errors = {},
   name,
+  validation = { required: { value: true, message: "can't be empty" } },
   ...props
 }) {
   let labelStyles = "text-sm text-7 dark:text-5";
@@ -14,19 +15,20 @@ export default function InputText({
     labelStyles += " text-9";
     inputStyles += " border-9";
   }
+
   return (
     <label className="w-full flex flex-col gap-[9px] cursor-pointer">
       <p className="w-full flex justify-between">
         <span className={labelStyles}>{label}</span>
         {Object.keys(errors).length !== 0 && (
           <span className="text-[0.625rem] font-semibold leading-[1.5] text-9">
-            can't be empty
+            {errors.message}
           </span>
         )}
       </p>
 
       <input
-        {...register(`${name}`, { required: true })}
+        {...register(`${name}`, validation)}
         className={inputStyles}
         type={type}
         {...props}
