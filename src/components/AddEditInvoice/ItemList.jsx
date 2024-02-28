@@ -1,7 +1,5 @@
 import Button from "../UI/Buttons/Button";
 import Item from "./Item";
-import { useContext, useState } from "react";
-import { DataContext } from "../../store/DataContext";
 
 export default function ItemList({
   id,

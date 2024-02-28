@@ -6,6 +6,7 @@ export default function ItemInput({
   errors,
   name,
   remove,
+  type = "text",
   ...rest
 }) {
   const isBigScreen = useMediaQuery({ query: "(min-width: 768px)" });
@@ -16,6 +17,11 @@ export default function ItemInput({
   if (isBigScreen) {
     inputCss =
       "w-full pt-[18px] px-5 pb-[15px] text-base text-8 dark:text-white rounded bg-white dark:bg-3 outline-none border border-5 dark:border-[#252945] hover:border-[#9277FF] cursor-pointer";
+  }
+
+  if (name === "total") {
+    inputCss =
+      "w-full p-0 border-none outline-none text-base text-7 dark:text-5 font-bold";
   }
 
   if (errors.items?.[index]?.price) {
@@ -31,7 +37,7 @@ export default function ItemInput({
       <input
         {...register(`items.${index}.${name}`, { required: true })}
         className={inputCss}
-        type="text"
+        type={type}
         {...rest}
       ></input>
     </label>
