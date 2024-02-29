@@ -1,8 +1,17 @@
 import Button from "../UI/Buttons/Button";
 
-export default function ButtonGroup({ handleSubmit, handleClose, id }) {
+export default function ButtonGroup({
+  setStatus,
+  handleClose,
+  id,
+  isCreating,
+}) {
   function closeInvoice() {
     handleClose();
+  }
+
+  function saveAsDraft() {
+    setStatus("draft");
   }
 
   if (id) {
@@ -11,7 +20,9 @@ export default function ButtonGroup({ handleSubmit, handleClose, id }) {
         <Button $type="3" onClick={closeInvoice}>
           Cancel
         </Button>
-        <Button $type="2">Save Changes</Button>
+        <Button $type="2" form="invoiceForm" type="submit">
+          Save Changes
+        </Button>
       </div>
     );
   } else {
@@ -22,9 +33,16 @@ export default function ButtonGroup({ handleSubmit, handleClose, id }) {
         </Button>
 
         <div className="flex gap-2">
-          <Button $type="4">Save as Draft</Button>
+          <Button
+            $type="4"
+            form="invoiceForm"
+            type="submit"
+            onClick={saveAsDraft}
+          >
+            Save as Draft
+          </Button>
           <Button $type="2" form="invoiceForm" type="submit">
-            Save & Send
+            {isCreating ? "Sending..." : "Save & Send"}
           </Button>
         </div>
       </div>
