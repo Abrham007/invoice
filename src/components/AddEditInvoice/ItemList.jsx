@@ -2,10 +2,10 @@ import Button from "../UI/Buttons/Button";
 import Item from "./Item";
 
 export default function ItemList({
-  id,
   controlledFields,
   append,
   remove,
+  setValue,
   register,
   errors,
 }) {
@@ -36,6 +36,7 @@ export default function ItemList({
               <Item
                 field={field}
                 index={index}
+                setValue={setValue}
                 register={register}
                 errors={errors}
                 remove={remove}
@@ -46,7 +47,12 @@ export default function ItemList({
         <Button
           type="button"
           onClick={() =>
-            append({ name: "", quantity: "", price: "", total: "" })
+            append({
+              name: "",
+              quantity: "",
+              price: "",
+              total: "",
+            })
           }
           $type="3"
         >
