@@ -12,7 +12,7 @@ export default function InvoiceListEmpty({ reason }) {
         <h2 className="mt-auto text-8 dark:text-white text-lg   font-bold">
           {reason === "empty"
             ? "There is nothing here"
-            : "Fetching the data..."}
+            : "Fetching invoices..."}
         </h2>
         <p className="text-6 dark:text-5 text-sm text-center font-medium">
           {reason === "empty"
