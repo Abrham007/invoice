@@ -2,11 +2,12 @@ const HOST = "http://localhost:4000";
 
 export async function fetchInvoices() {
   const res = await fetch(HOST + "/api");
-  const resData = await res.json();
 
   if (!res.ok) {
     throw Error("Error fetching the invoices");
   }
+
+  const resData = await res.json();
 
   return resData;
 }
@@ -20,11 +21,43 @@ export async function postInvoice(newInvoice) {
     body: JSON.stringify(newInvoice),
   });
 
-  const resData = await res.json();
-
   if (!res.ok) {
     throw Error("Error posting the invoice");
   }
+
+  const resData = await res.json();
+
+  return resData;
+}
+
+export async function putInvoice(id, updatedInvoice) {
+  const res = await fetch(HOST + `/api/update/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedInvoice),
+  });
+
+  if (!res.ok) {
+    throw Error("Error updating the invoice");
+  }
+
+  const resData = await res.text();
+
+  return resData;
+}
+
+export async function deleteInvoice(id) {
+  const res = await fetch(HOST + `/api/delete/${id}`, {
+    method: "DELETE",
+  });
+
+  if (!res.ok) {
+    throw Error("Error deleting the invoice");
+  }
+
+  const resData = await res.text();
 
   return resData;
 }
