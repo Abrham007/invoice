@@ -5,57 +5,97 @@ import ItemList from "./ItemList";
 import leftIcon from "../../assets/icon-arrow-left.svg";
 import Modal from "../Modal";
 import SideBar from "../SideBar";
-import { useState } from "react";
 import ButtonGroup from "./ButtonGroup";
 import { useForm, useFieldArray } from "react-hook-form";
 import ErrorList from "./ErrorList";
+import { useState, useContext } from "react";
+import { DataContext } from "../../store/DataContext";
+
+function prepareData(data, status) {
+  function createDateString(date) {
+    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  }
+
+  let newInvoice = { ...data };
+
+  newInvoice.status = status;
+
+  newInvoice.items.forEach((item) => {
+    item.quantity = parseInt(item.quantity);
+    item.price = parseFloat(item.price);
+    item.total = parseFloat(item.total);
+  });
+
+  let totalPrice = newInvoice.items
+    .map((item) => item.total)
+    .reduce((x, y) => parseFloat(x) + parseFloat(y));
+  newInvoice.total = parseFloat(totalPrice);
+
+  let paymentTerms = newInvoice.paymentTerms;
+  let createdAt = new Date(newInvoice.createdAt);
+  let paymentDue = new Date(newInvoice.createdAt);
+  paymentDue.setDate(paymentDue.getDate() + paymentTerms);
+
+  newInvoice.createdAt = createDateString(createdAt);
+  newInvoice.paymentDue = createDateString(paymentDue);
+
+  return newInvoice;
+}
 
 export default function AddEditInvoice({ isOpen, handleClose, id }) {
-  let tempInvoice = {
-    createdAt: "2021-10-7",
-    paymentDue: "2021-10-14",
-    description: "Re-branding",
-    paymentTerms: 7,
-    clientName: "Mellisa Clarke",
-    clientEmail: "mellisa.clarke@example.com",
+  const { data, createInvoice, isCreating } = useContext(DataContext);
+
+  let defaultValue = {
+    createdAt: new Date().toDateString(),
+    description: "",
+    paymentTerms: 30,
+    clientName: "",
+    clientEmail: "",
     status: "pending",
     senderAddress: {
-      street: "19 Union Terrace",
-      city: "London",
-      postCode: "E1 3EZ",
-      country: "United Kingdom",
+      street: "",
+      city: "",
+      postCode: "",
+      country: "",
     },
     clientAddress: {
-      street: "46 Abbey Row",
-      city: "Cambridge",
-      postCode: "CB5 6EG",
-      country: "United Kingdom",
+      street: "",
+      city: "",
+      postCode: "",
+      country: "",
     },
-    items: [
-      {
-        name: "New Logo",
-        quantity: 1,
-        price: 1532.33,
-        total: 1532.33,
-      },
-      {
-        name: "Brand Guidelines",
-        quantity: 1,
-        price: 2500.0,
-        total: 2500.0,
-      },
-    ],
-    total: 4032.33,
+    items: [],
   };
+
+  let title = (
+    <h2 className="text-lg/8 text-8 dark:text-white font-bold">New Invoice</h2>
+  );
+
+  if (id) {
+    let currentInvoice = data.find((invoice) => invoice.id === id);
+    delete currentInvoice.total;
+    delete currentInvoice.paymentDue;
+    delete currentInvoice.id;
+    defaultValue = currentInvoice;
+    title = (
+      <h2 className="text-lg/8 text-8 dark:text-white font-bold">
+        Edit <span className="text-6">#</span>
+        {String(id).slice(0, 7).toUpperCase()}
+      </h2>
+    );
+  }
+
+  const [status, setStatus] = useState(defaultValue.status);
 
   const {
     register,
     handleSubmit,
     watch,
     control,
+    setValue,
     formState: { errors },
   } = useForm({
-    defaultValues: tempInvoice,
+    defaultValues: defaultValue,
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -72,21 +112,13 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
     };
   });
 
-  function onSubmit(data) {
-    console.log(data);
-  }
-
-  let title = (
-    <h2 className="text-lg/8 text-8 dark:text-white font-bold">New Invoice</h2>
-  );
-
-  if (id) {
-    title = (
-      <h2 className="text-lg/8 text-8 dark:text-white font-bold">
-        Edit <span className="text-6">#</span>
-        {String(id).slice(0, 7).toUpperCase()}
-      </h2>
-    );
+  async function onSubmit(data) {
+    if (id) {
+      console.log(prepareData(data, status));
+    } else {
+      await createInvoice(prepareData(data, status));
+      closeInvoice();
+    }
   }
 
   function closeInvoice() {
@@ -116,8 +148,8 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
           onSubmit={handleSubmit(onSubmit)}
           className=" flex flex-col gap-[41px] "
         >
-          <BillFrom id={id} register={register} errors={errors}></BillFrom>
-          <BillTo id={id} register={register} errors={errors}></BillTo>
+          <BillFrom register={register} errors={errors}></BillFrom>
+          <BillTo register={register} errors={errors}></BillTo>
           <InvoiceInfo
             id={id}
             register={register}
@@ -125,18 +157,23 @@ export default function AddEditInvoice({ isOpen, handleClose, id }) {
             control={control}
           ></InvoiceInfo>
           <ItemList
-            id={id}
             controlledFields={controlledFields}
             register={register}
             errors={errors}
             append={append}
             remove={remove}
+            setValue={setValue}
           ></ItemList>
         </form>
         <ErrorList errors={errors}></ErrorList>
       </div>
 
-      <ButtonGroup id={id} handleClose={handleClose}></ButtonGroup>
+      <ButtonGroup
+        id={id}
+        handleClose={handleClose}
+        setStatus={setStatus}
+        isCreating={isCreating}
+      ></ButtonGroup>
     </Modal>
   );
 }
