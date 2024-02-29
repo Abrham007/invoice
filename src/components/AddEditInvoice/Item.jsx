@@ -1,7 +1,15 @@
+import { useEffect, useState } from "react";
 import IconDelete from "../UI/Icons/IconDelete";
 import ItemInput from "./ItemInput";
 
-export default function Item(props) {
+export default function Item({ setValue, ...props }) {
+  useEffect(() => {
+    let currentTotal = Number(props.field.quantity * props.field.price).toFixed(
+      2
+    );
+    setValue(`items.${props.index}.total`, currentTotal);
+  }, [props.field.quantity, props.field.price, props.index, setValue]);
+
   return (
     <fieldset className="min-w-full flex flex-col md:flex-row gap-[15px]">
       <span className="md:w-[200px] shrink-0">
@@ -25,6 +33,7 @@ export default function Item(props) {
             name="price"
             label="Price"
             type="number"
+            step="0.01"
           ></ItemInput>
         </span>
         <span className="w-[56px] flex flex-col gap-[27px] md:justify-center">
@@ -33,7 +42,9 @@ export default function Item(props) {
             placeholder="0.00"
             name="total"
             label="Total"
-            value={Number(props.field.quantity * props.field.price).toFixed(2)}
+            type="number"
+            step="0.01"
+            disabled={true}
           ></ItemInput>
 
           {/* <span className="text-sm text-7 dark:text-5 md:hidden">Total</span>
