@@ -1,11 +1,11 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { deleteInvoice, fetchInvoices, postInvoice, putInvoice } from "../http";
 
 export const DataContext = createContext();
 
 export default function DataContextProvider({ children }) {
   const [data, setData] = useState([]);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
 
@@ -58,7 +58,7 @@ export default function DataContextProvider({ children }) {
         let invoiceArray = await fetchInvoices();
         setData(invoiceArray);
       } catch (error) {
-        setError({ message: error.message || "Failed to fetch" });
+        setError({ message: error.message || "Failed to fetch invoices" });
       }
 
       setIsLoading(false);
@@ -71,6 +71,7 @@ export default function DataContextProvider({ children }) {
     data,
     isLoading,
     error,
+    setError,
     createInvoice,
     isCreating,
     updateInvoice,
