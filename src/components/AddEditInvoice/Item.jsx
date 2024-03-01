@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import IconDelete from "../UI/Icons/IconDelete";
 import ItemInput from "./ItemInput";
 
@@ -46,13 +46,6 @@ export default function Item({ setValue, ...props }) {
             step="0.01"
             disabled={true}
           ></ItemInput>
-
-          {/* <span className="text-sm text-7 dark:text-5 md:hidden">Total</span>
-          <span className="text-base text-7 dark:text-5 font-bold">
-            {props.fields?.total
-              ? Number(props.fields.total).toFixed(2)
-              : Number(props.field.quantity * props.field.price).toFixed(2)}
-          </span> */}
         </span>
         <span className=" flex justify-end items-end pb-4 ">
           <button type="button" onClick={() => props.remove(props.index)}>
