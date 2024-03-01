@@ -4,9 +4,11 @@ import InvoiceList from "./InvoiceList";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../store/DataContext";
 import AddEditInvoice from "../AddEditInvoice/AddEditInvoice";
+import Modal from "../Modal";
+import Error from "../Error";
 
 export default function Main() {
-  const { data, isLoading, error } = useContext(DataContext);
+  const { data, isLoading, error, setError } = useContext(DataContext);
 
   const [invoiceList, setinvoiceList] = useState(data);
   const [isAddOpen, setAddOpen] = useState(false);
@@ -65,6 +67,15 @@ export default function Main() {
           isOpen={isAddOpen}
           handleClose={closeAddInvoice}
         ></AddEditInvoice>
+      )}
+      {error && (
+        <Modal
+          isOpen={error}
+          setIsOpen={setError}
+          className="backdrop:opacity-50 backdrop:bg-[#000]"
+        >
+          <Error message={error.message}></Error>
+        </Modal>
       )}
     </main>
   );

@@ -6,11 +6,13 @@ import ButtonGroup from "./ButtonGroup";
 import { useContext } from "react";
 import { DataContext } from "../../store/DataContext";
 import { Link, useParams } from "react-router-dom";
+import Modal from "../Modal";
+import Error from "../Error";
 
 export default function InvoiceDetail() {
   let { id } = useParams();
 
-  const { data } = useContext(DataContext);
+  const { data, error, setError } = useContext(DataContext);
 
   const currentInvoice = data.find((invoice) => invoice.id === id);
 
@@ -91,6 +93,15 @@ export default function InvoiceDetail() {
       <footer className="md:hidden fixed bottom-0 left-0 w-screen h-[91px] px-6 flex gap-2 justify-center items-center shadow bg-white dark:bg-3">
         <ButtonGroup id={id}></ButtonGroup>
       </footer>
+      {error && (
+        <Modal
+          isOpen={error}
+          setIsOpen={setError}
+          className="backdrop:opacity-50 backdrop:bg-[#000]"
+        >
+          <Error message={error.message}></Error>
+        </Modal>
+      )}
     </main>
   );
 }
