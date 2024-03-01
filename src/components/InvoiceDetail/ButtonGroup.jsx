@@ -29,7 +29,7 @@ export default function ButtonGroup({ id }) {
         setIsOpen={setDeleteOpen}
         className="backdrop:opacity-50 backdrop:bg-[#000]"
       >
-        <Delete></Delete>
+        <Delete id={id}></Delete>
       </Modal>
       {isEditOpen && (
         <AddEditInvoice
