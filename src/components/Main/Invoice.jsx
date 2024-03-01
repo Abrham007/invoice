@@ -3,11 +3,13 @@ import Status from "../Status";
 import { Link } from "react-router-dom";
 export default function Invoice(props) {
   let date = new Date(props.paymentDue);
+
   let dueDate = new Intl.DateTimeFormat(undefined, {
     month: "short",
     year: "numeric",
     day: "2-digit",
   }).format(date);
+
   return (
     <Link
       to={`invoicedetail/${props.id}`}
