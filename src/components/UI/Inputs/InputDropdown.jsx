@@ -24,6 +24,7 @@ export default function InputDropdown({
 
   function handleSelectingTerm(newTerm) {
     onChange(newTerm);
+    setIsOpen(false);
   }
 
   return (

@@ -16,6 +16,10 @@ export default function ButtonFilter({ children, onChange }) {
     setIsOpen((prevValue) => !prevValue);
   }
 
+  function handleClose() {
+    setIsOpen(false);
+  }
+
   return (
     <div className="relative self-center">
       <button
@@ -26,7 +30,7 @@ export default function ButtonFilter({ children, onChange }) {
         <img src={isOpen ? upIcon : downIcon} alt=""></img>
       </button>
       <form className={formStyle} onChange={onChange}>
-        <label className="group">
+        <label className="group" onClick={handleClose}>
           <input
             type="radio"
             defaultChecked
@@ -39,7 +43,7 @@ export default function ButtonFilter({ children, onChange }) {
           </span>
         </label>
 
-        <label className="group">
+        <label className="group" onClick={handleClose}>
           <input
             type="radio"
             name="status"
@@ -51,7 +55,7 @@ export default function ButtonFilter({ children, onChange }) {
           </span>
         </label>
 
-        <label className="group">
+        <label className="group" onClick={handleClose}>
           <input
             type="radio"
             name="status"
@@ -63,7 +67,7 @@ export default function ButtonFilter({ children, onChange }) {
           </span>
         </label>
 
-        <label className="group">
+        <label className="group" onClick={handleClose}>
           <input
             type="radio"
             name="status"
