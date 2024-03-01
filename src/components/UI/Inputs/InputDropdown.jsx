@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import downIcon from "../../../assets/icon-arrow-down.svg";
 export default function InputDropdown({
   label,
