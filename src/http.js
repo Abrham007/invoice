@@ -1,7 +1,5 @@
-const HOST = process.env.API_URL;
-
 export async function fetchInvoices() {
-  const res = await fetch(HOST + "/api");
+  const res = await fetch("/api");
 
   if (!res.ok) {
     throw Error("Error fetching the invoices");
@@ -13,7 +11,7 @@ export async function fetchInvoices() {
 }
 
 export async function postInvoice(newInvoice) {
-  const res = await fetch(HOST + "/api/new", {
+  const res = await fetch("/api/new", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -31,7 +29,7 @@ export async function postInvoice(newInvoice) {
 }
 
 export async function putInvoice(id, updatedInvoice) {
-  const res = await fetch(HOST + `/api/update/${id}`, {
+  const res = await fetch(`/api/update/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -49,7 +47,7 @@ export async function putInvoice(id, updatedInvoice) {
 }
 
 export async function deleteInvoice(id) {
-  const res = await fetch(HOST + `/api/delete/${id}`, {
+  const res = await fetch(`/api/delete/${id}`, {
     method: "DELETE",
   });
 
