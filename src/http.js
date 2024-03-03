@@ -1,4 +1,4 @@
-const HOST = "http://localhost:4000";
+const HOST = process.env.API_URL;
 
 export async function fetchInvoices() {
   const res = await fetch(HOST + "/api");
