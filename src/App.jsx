@@ -3,7 +3,7 @@ import Main from "./components/Main/Main";
 import SideBar from "./components/SideBar";
 import DataContextProvider from "./store/DataContext";
 import ThemeContextProvider from "./theme/ThemeContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 export default function App() {
   return (
@@ -17,6 +17,7 @@ export default function App() {
               path="/invoicedetail/:id"
               element={<InvoiceDetail></InvoiceDetail>}
             ></Route>
+            <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </DataContextProvider>
       </ThemeContextProvider>
