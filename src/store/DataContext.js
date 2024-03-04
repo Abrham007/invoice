@@ -15,7 +15,7 @@ export default function DataContextProvider({ children }) {
       const createdInvoice = await postInvoice(newInvoice);
       setData((prevValue) => [createdInvoice, ...prevValue]);
     } catch (error) {
-      setError({ message: error.message || "Failed to create invoice" });
+      setError({ message: "Failed to create invoice" });
     }
     setIsCreating(false);
   }
@@ -34,7 +34,7 @@ export default function DataContextProvider({ children }) {
       await putInvoice(id, updatedInvoice);
     } catch (error) {
       setData(data);
-      setError({ message: error.message || "Failed to update invoice" });
+      setError({ message: "Failed to update invoice" });
     }
   }
 
@@ -47,7 +47,7 @@ export default function DataContextProvider({ children }) {
       await deleteInvoice(id);
     } catch (error) {
       setData(data);
-      setError({ message: error.message || "Failed to delete invoice" });
+      setError({ message: "Failed to delete invoice" });
     }
   }
 
@@ -58,7 +58,7 @@ export default function DataContextProvider({ children }) {
         let invoiceArray = await fetchInvoices();
         setData(invoiceArray);
       } catch (error) {
-        setError({ message: error.message || "Failed to fetch invoices" });
+        setError({ message: "Failed to fetch invoices" });
       }
 
       setIsLoading(false);
