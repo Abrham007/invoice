@@ -7,7 +7,7 @@
   - [Screenshot](#screenshot)
   - [Links](#links)
   - [Author](#author)
-  - [Skill set](#skill-set)
+  - [Skills](#skills)
 
 ## Overview
 
@@ -41,10 +41,10 @@ This project took me about 1 week to finish. It's fully backed with a Node.js he
 
 ### Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Abrham Araya](https://www.your-site.com)
+- Github - [Abrham007](https://github.com/Abrham007)
+- Stackover-flow - [Abrham Araya](https://stackoverflow.com/users/22762463/abrham-araya)
 
 ### Skills
 
-![Skills](./screenshots/skills-set-visauls.png)
+![Skills](./screenshots/skills.png)
