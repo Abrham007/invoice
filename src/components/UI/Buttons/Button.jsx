@@ -1,4 +1,4 @@
-export default function Button({ children, $type, ...props }) {
+export default function Button({ children, $type, purpose = "add", ...props }) {
   let cssClass = "";
   switch ($type) {
     case "1":
@@ -7,7 +7,10 @@ export default function Button({ children, $type, ...props }) {
       break;
     case "2":
       cssClass =
-        "px-[23px] h-[48px] rounded-full text-white text-base bg-1 hover:bg-2 font-bold outline-none";
+        "px-[23px] h-[48px] -tracking-[0.01563rem] rounded-full text-white text-base bg-1 hover:bg-2 font-bold outline-none";
+      if (purpose === "edit") {
+        cssClass += " px-[16px] w-max";
+      }
       break;
     case "3":
       cssClass =
@@ -16,6 +19,9 @@ export default function Button({ children, $type, ...props }) {
     case "4":
       cssClass =
         "px-[23px] h-[48px] rounded-full bg-[#373B53] hover:bg-8 dark:hover:bg-3 text-6 dark:text-5 text-base  font-bold outline-none";
+      if (purpose === "edit") {
+        cssClass += " px-[16px] w-max";
+      }
       break;
     case "5":
       cssClass =

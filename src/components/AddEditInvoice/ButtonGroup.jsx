@@ -27,21 +27,22 @@ export default function ButtonGroup({
     );
   } else {
     return (
-      <div className="sticky bottom-0 left-0 w-screen md:w-full  p-6 flex gap-2 justify-between items-center bg-white dark:bg-3 shadow-xl md:rounded-r-[20px]">
+      <div className="sticky bottom-0 left-0 w-screen md:w-full p-6 flex gap-2 justify-between items-center bg-white dark:bg-3 shadow-xl md:rounded-r-[20px]">
         <Button $type="3" onClick={closeInvoice}>
           Discard
         </Button>
 
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           <Button
             $type="4"
             form="invoiceForm"
             type="submit"
             onClick={saveAsDraft}
+            purpose="edit"
           >
             Save as Draft
           </Button>
-          <Button $type="2" form="invoiceForm" type="submit">
+          <Button $type="2" form="invoiceForm" type="submit" purpose="edit">
             {isCreating ? "Sending..." : "Save & Send"}
           </Button>
         </div>
