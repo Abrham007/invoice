@@ -22,7 +22,7 @@ export default function ItemInput({
 
   if (name === "total") {
     inputCss =
-      "w-full p-0 border-none outline-none text-base text-7 dark:text-5 font-bold ";
+      "w-full pt-[18px] pb-[15px] md:p-0 border-none outline-none text-base text-7 dark:text-5 font-bold bg-white dark:bg-12";
   }
 
   if (errors.items?.[index]?.[name]) {
