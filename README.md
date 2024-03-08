@@ -24,8 +24,9 @@ This project took me about 1 week to finish. It's fully backed with a Node.js he
 - Mobile-first workflow
 - Webpack
 - [React](https://reactjs.org/) - Frontend framework
-- [Node.js](https://nodejs.org/) - Backend framework
 - [TailwindCSS](https://tailwindcss.com//) - For styles
+- [Node.js](https://nodejs.org/) - Backend framework
+- [Firebase/Firestore](https://firebase.google.com/) - NoSQL Database
 
 ### Screenshot
 
