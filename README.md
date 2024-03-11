@@ -13,7 +13,7 @@
 
 ### About Project
 
-This project took me about 1 week to finish. It's fully backed with a Node.js heroku server and Firebase/Firestore database. I used a Mobile-first workflow because i used tailwind as a CSS framework
+This project is a invoice app that basically saves, edits and deletes invoices of a customer or client .It also has different states like draft, pending and paid which represent the current state of a given invoice. It has responsive design for desktop, tablet and mobile screens. I used React and tailwindCSS with a moblie first workflow for the front-end and node.js and Firebase/Firestore database for the back-end. It is fully online on a Heroku server.
 
 ### Built with
 
